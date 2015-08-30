@@ -1,0 +1,17 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<%= stylesheet_link_tag 'redbox' %>
+
+<div class="big_photo">
+	<p>&nbsp;</p>
+	<p align='center'><%= image_tag @path, :width => '600' %></p>
+	<p>&nbsp;</p>
+	<p align='right'>
+		<exit><%= link_to_close_redbox I18n.t('button.close') %></exit> 
+	</p>
+</div>

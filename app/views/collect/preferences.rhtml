@@ -1,0 +1,29 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<h2><%= I18n.t('step.one') %></h2>
+
+<p><%= I18n.t('step.one_text') %></p>
+
+<div id = 'preferences_form'>
+		<% form_tag :action => 'check_tastes_answers', :changes => @prepare_for_changes.to_s do%>
+		<%@questions_array.length.times do |q|%>
+			<div class="question">
+				<p><number>#<%=(q+1).to_s%></number> <%= @questions_array[q].question%></p>
+				<%= select_tag 'q'+(q+1).to_s, options_for_select(@questions_array[q].options, 1)%>
+			</div>
+			<% if q!= @questions_array.length - 1 %>
+				<p></p>
+			<%end%>
+		<%end%>
+		
+			<div class="button">
+				<p><next><%= link_to_function I18n.t('button.next'), "$(this).up('form').submit()" %></next></p>
+			</div>
+		<% end %>
+</div>
+

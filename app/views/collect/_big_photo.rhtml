@@ -1,0 +1,23 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<%= stylesheet_link_tag 'redbox' %>
+
+<div class="big_photo">
+	<p><b>Scale: <%= @scale.to_s %>%</b></p>
+	<% if @scale>85%>
+		<p align='center' style='color: #ff0000;'>Warning: This picture may be too small for being printed.</p>
+	<% else %>
+		<p>&nbsp;</p>
+	<% end %>
+	<p align='center'><img src="<%=@path%>" width='600'></p>
+	<p>&nbsp;</p>
+	<p align='right'><exit><%= link_to_close_redbox I18n.t('button.close') %></exit> 
+	<save><%= link_to I18n.t('button.choose_picture'), {:controller=> 'collect' ,
+				:action => 'download_flickr_image', 
+				:url => @path}%></save></p>
+</div>

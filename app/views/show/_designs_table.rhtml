@@ -1,0 +1,78 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<% iterator = 0 %>
+<table class="nob">
+<td width="280">
+	<h1><%= I18n.t('show.designs') %></h1>
+</td>
+<td width="120">
+	<%= image_tag 'spinner2.gif', :id => 'spinner', :style => 'display: none'  %>
+</td>
+<td>
+	<next><%= link_to_remote I18n.t('button.get_designs'),
+		:url => { :action => "get_designs"},
+		:update => 'show_designs',
+		:complete => visual_effect(:blind_down, 'show_designs'), 
+	   	:before => %(Element.show('spinner')),
+	 	:success => %(Element.hide('spinner'))
+	 %></next>
+</td>
+</table>
+<table class="nob">
+<ul>
+<% 
+if @designs_paths.length>2
+	loop_n = ((@designs_paths.length/3)*5)
+else
+	loop_n = 3
+end %>
+	
+<% loop_n.times do |n| %>
+	<% if n%5 == 0 %>
+		<tr>
+	<% end %>
+	<% if n%5 == 1 or n%5 == 3 %>
+		<td width="25">
+	<% else %>
+		<td width="150" valign="bottom" align="center">
+			<table class="nob">
+			<tr>
+			<% image_id = "id_"+iterator.to_s %>
+			<li class="designList">
+				<% if  @designs_paths[iterator][1] != "fail.png "%>
+					<%= image_tag(@designs_paths[iterator][1], :class=>"design", :id => image_id) %><br>
+				<% else %>
+					<%= image_tag(@designs_paths[iterator][1], :id => image_id) %><br>
+				<% end %>
+			</li>
+			<%= draggable_element(image_id, :revert=>true) %>
+			</tr>
+			<tr>
+				<% if @designs_paths[iterator][0]!='fail'%>
+					<p align="center">
+						<%= link_to_remote_redbox image_tag(I18n.t('button.download_image'), :alt=>'View Large/Download'),
+						:url => {:action=>'show_big_design', :url => @designs_paths[iterator][0].to_s}%>&nbsp;&nbsp;<%= link_to_remote_redbox image_tag('download_xml.png', :alt=>'Download XML File'),
+						:url => {:action=>'show_xml', :item_n => iterator.to_s}%>
+					</p>
+				<% else %>
+					<p align="center">
+						<%= link_to_remote_redbox image_tag(I18n.t('button.fail'), :alt=>'Something went wrong...'),
+						:url => {:action=>'show_fail'}%>
+					</p>
+				<% end %>
+			</tr>
+			</table>
+			<% iterator += 1 %>
+	<% end %>
+		</td>
+	<% if n%3 == 4 %>
+		</tr>
+	<% end %>
+<% end %>
+</ul>
+</table>

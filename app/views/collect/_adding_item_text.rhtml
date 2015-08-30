@@ -1,0 +1,48 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<text>
+<%= link_to_remote I18n.t('button.create_group'),
+	:url => { :action => "change_to", :adding_item => "text"},
+	:update => 'adding_item'
+%>
+</text>
+<imag_out>
+<%= link_to_remote I18n.t('button.add_image_group'),
+	:url => { :action => "change_to", :adding_item => "image"},
+	:update => 'adding_item'
+%>
+</imag_out>
+
+<% options = {'Highlighted text' => '2', 'Normal text' => '3', 'Notes' => '4'} %>
+<% form_tag :action => 'add_group' do%>
+	<div id='new_group' class='new_group'>
+		<p>
+			<add>
+			<%= link_to_remote I18n.t('button.add_another_text'),
+				:url => { :action => "modify_group_size", :n => '1'},
+				:update => 'text_fields',
+				:complete => visual_effect(:highlight, 'new_group', :duration => 0.3, :startcolor => '#34d85e')
+		 	%>
+			</add>
+			<remove>
+			<%= link_to_remote I18n.t('button.remove_text'),
+				:url => { :action => "modify_group_size", :n => '0'},
+				:update => 'text_fields',
+				:complete => visual_effect(:highlight, 'new_group', :duration => 0.3, :startcolor => '#d83434')
+			%>
+			</remove>
+		</p>
+		<div id="text_fields">
+			<%= render :partial => 'text_fields' %>
+		</div>
+
+		<p align='right'>
+			<create><%= link_to_function I18n.t('button.add_group'), "$(this).up('form').submit()" %></create>
+		</p>
+	</div>		
+<%end%>

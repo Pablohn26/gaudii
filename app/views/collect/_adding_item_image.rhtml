@@ -1,0 +1,43 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<text_out>
+<%= link_to_remote I18n.t('button.create_group'),
+	:url => { :action => "change_to", :adding_item => "text"},
+	:update => 'adding_item'
+%>
+</text_out>
+<imag>
+<%= link_to_remote I18n.t('button.add_image_group'),
+	:url => { :action => "change_to", :adding_item => "image"},
+	:update => 'adding_item'
+%>
+</imag>
+
+<% 	options = Hash.new 
+	n_groups = 0
+	@groups.length.times do |i|
+		if i!=0 and not @groups[i].has_image
+			options['Group '+i.to_s]= i
+			n_groups+=1
+		end
+	end
+%>
+
+<div id="add_image" class="add_image">
+	<p><b><%= I18n.t('texts.image_text1') %></b></p>
+	<% form_tag ({:action => 'add_image_to_a_group'},:multipart => true) do %>
+		<% if n_groups>=1%>
+			<p><%= I18n.t('texts.group') %>: <%= select_tag 'group', options_for_select(options)%></p>
+		
+			<p><%= I18n.t('texts.image') %>: <%= file_field 'upload', 'datafile' %></p>
+			<p><%= submit_tag "Upload" %></p>
+		<% else %>
+			<p><%= I18n.t('texts.image_text2') %></p>
+		<% end %>
+	<% end %>
+</div>

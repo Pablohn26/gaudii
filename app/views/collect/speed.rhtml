@@ -1,0 +1,20 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<h2><%= I18n.t('step.last') %></h2>
+
+<p><%= I18n.t('step.last_text') %></p>
+
+<div id = 'preferences_form'>
+		<% form_tag :action => 'check_speed' do%>
+			<p align="center"><%= select_tag "speed", options_for_select(@options) %></p>
+		
+		<div class="button">
+			<p><next><%= link_to_function I18n.t('button.last'), "$(this).up('form').submit()" %></next></p>
+		</div>
+	<% end %>
+</div>

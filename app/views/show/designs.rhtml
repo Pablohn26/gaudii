@@ -1,0 +1,80 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<table style ="nob">
+	<tr>
+		<td valign="top" rowspan="2">	
+			<div id= "show_designs" class="show_designs">
+				<% if @xml%>
+					<%= render :partial => 'designs_table' %>
+				<% else %>
+					<table style="nob">
+					<td width="280">
+						<h1><%= I18n.t('show.designs') %></h1>
+					</td>
+					<td width="120">
+						<%= image_tag 'spinner2.gif', :id => 'spinner', :style => 'display: none'  %>
+					</td>
+					<td>
+						<next><%= link_to_remote I18n.t('button.get_designs'),
+							:url => { :action => "get_designs"},
+							:update => 'show_designs',
+							:complete => visual_effect(:blind_down, 'show_designs'), 
+						   	:before => %(Element.show('spinner')),
+						 	:success => %(Element.hide('spinner'))
+						 %></next>
+					</td>
+					</table>
+				<% end %>
+			</div>
+		</td>
+		<td valign="top">
+			<div id= "mixer" class="mixer">
+				<table style="nob">
+					<tr>
+						<h1><%= I18n.t('show.mixer') %></h1>
+					</tr>
+					<tr valign = "top">
+						<div id="drop_zone" class="drop_zone">
+							<ul>
+								<p align="center"><bignumber>0</bignumber><br>
+								<%= I18n.t('show.elements') %></p>
+							</ul>
+						</div>
+					</tr>
+				</table>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<div id= "xml" class="xml">
+				<table style="nob">
+					<tr>
+						<h1><%= I18n.t('show.upload_xml') %></h1>
+					</tr>
+					<tr valign = "top">
+						<% form_tag({:action => 'upload_xml'},:multipart => true) do %>
+							<p><%= file_field 'upload', 'datafile' %></p>
+							<%= submit_tag "Upload" %>
+						<% end %>
+					</tr>
+				</table>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<%= drop_receiving_element('drop_zone',                   # The id of the receiving element
+	:accept => "design",                                  # The CSS class of the dropped element
+	:with   => "'id=' + (element.id.split('_').last())",
+	:url => {:action => 'update_drop_zone'},
+	:update => 'drop_zone',
+	:complete => visual_effect(:highlight, "mixer", :duration => 0.3, :startcolor => '#34d85e')
+)%>
+
+

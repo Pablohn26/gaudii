@@ -1,0 +1,40 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<?xml version="1.0"?>
+<QUESTIONS>
+	<Q name="question_1" number="1" content="¿De donde quieres que coja Gaudii la imagen principal de tu diseño?">
+		<option value="1" content="Yo la subiré"/>
+		<option value="2" content="Desde la búsqueda de Flickr"/>
+	</Q>
+	<Q name="question_2" number="2" content="¿Desde donde prefieres que se obtengan los colores del diseño?">
+		<option value="1" content="Me da igual"/>
+		<option value="2" content="De la imagen"/>
+		<option value="3" content="Mejor que sean aleatorios"/>
+	</Q>
+	<Q name="question_3" number="3" content="¿Te gustaría que haya colores en tu diseño?">
+		<option value="1" content="Me da igual"/>
+		<option value="2" content="De hecho prefiero las cosas en blanco y negro"/>
+		<option value="3" content="Sí, ¿por que no?"/>
+		<option value="4" content="por supuesto, me encantan los colores, ¡cuantos más mejor!"/>
+	</Q>
+	<Q name="question_4" number="4" content="¿Prefieres diseños oscuros o claros?">
+		<option value="1" content="Me da igual"/>
+		<option value="2" content="Oscuros, por favor."/>
+		<option value="3" content="Creo que los prefiero claros"/>
+	</Q>
+	<Q name="question_5" number="5" content="¿Qué clase de tipografía te gustaria ver en tu diseño?">
+		<option value="1" content="Me da igual"/>
+		<option value="2" content="Me gustan las tipografías gráficas y divertidas."/>
+		<option value="3" content="Casi que prefiero tipografías serias."/>
+	</Q>
+	<Q name="question_6" number="6" content="¿Prefieres diseños horizontales o verticales?">
+		<option value="1" content="Me da igual"/>
+		<option value="2" content="Horizontales"/>
+		<option value="3" content="Verticales"/>
+	</Q>
+</QUESTIONS>

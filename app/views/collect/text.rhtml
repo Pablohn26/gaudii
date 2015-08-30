@@ -1,0 +1,101 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<h2><%= I18n.t('texts.step') %></h2>
+
+<% if @design.groups.length == 0%>
+
+	<% form_tag :action =>'add_main_elements' do%>
+	<div id= 'main_elements' class='elements'>
+		<p><g_title><%= I18n.t('texts.step') %></g_title></p>
+		<p><%= text_field_tag 'c0', nil, :size => '50' %> 
+			<%= label_tag I18n.t('texts.title'), nil, :class =>'h0'%> <options><%= I18n.t('texts.mandatory') %></options></p>
+		<p><%= text_field_tag 'c1', nil, :size => '50' %> 
+		<%= label_tag I18n.t('texts.subtitle'), nil, :class =>'h0' %> <options><%= I18n.t('texts.optional') %></options></p>
+	</div>
+
+	<div class="button">
+		<p><edit><%= link_to_remote_redbox(I18n.t('edit.title'),
+		:url => {:controller=>'collect', :action=>'edit_design' })%></edit>
+		<next><%= link_to_function I18n.t('button.add_elements'), "$(this).up('form').submit()" %></next></p>
+	</div>
+	<% end %>   <!-- form_tag-->
+
+<% else %>
+
+	<div class="design_preview">
+		<h2><%= I18n.t('texts.preview') %></h2>
+		<div class="texts_preview">
+			<p>	<% @design.groups[0].items.each do |item|%>
+				<% if item.type == 0 %>
+					<titl><%= item.content %></titl><br>
+				<% elsif item.type == 1 %>
+					<subtitl><%= item.content %></subtitl>
+				<% end %>
+			<% end %>
+			</p>
+		
+			<% if @design.groups.length== 1 %>
+				<p><notice><%= I18n.t('texts.groups_advise') %></notice></p>
+			<% else %>
+				<% 	l = @design.groups.length 
+					l-=1%>
+				<% l.times do |n|%>
+					<div class="each_group">
+						<p><name><%= I18n.t('texts.group') %> #<%=  n+1%></name>
+							<%= link_to_function '&#9662;', "Element.toggle('g"+(n+1).to_s+"')" %>
+							<remove><%= link_to I18n.t('button.remove_group'), 
+							{:action => 'remove_group', :group => n+1},
+							:confirm => I18n.t('texts.delete_warning') %></remove>	
+							</p>
+						<div id='g<%= (n+1).to_s %>' class="text_elements" style='display: none'>
+							<% @design.groups[n+1].items.each do |item| %>
+								<% if item.instance_of? Letters %>
+									<% type_string = 'texts.t_h'+item.type.to_s %>
+									<p><%= item.content %> <type>(<%= I18n.t(type_string) %>)</type></p>
+								<% end %>
+							<% end %>
+							
+							<% if @design.groups[n+1].has_image %>
+								<p><attached><%= I18n.t('texts.image_attached') %></attached></p>
+							<% end %>
+
+							<p><%= link_to_remote_redbox(I18n.t('button.edit_group'),
+							:url => {:controller=>'collect', 
+							:action=>'edit_group',
+							:id => (n+1).to_s}) %>
+							&nbsp</p>
+						</div>
+					</div>
+				<% end %>
+	
+			<% end %>
+		</div>
+	</div>
+	
+	<div id= 'adding_item' class="adding_item">
+		<%= render :partial => 'adding_item_text' %>
+	</div>
+	
+	<div class="button">
+		<p>
+			<edit><%= link_to_remote_redbox(I18n.t('edit.title'),
+			:url => {:controller=>'collect', :action=>'edit_design' })%></edit>
+			<next><%= link_to I18n.t('button.stop_adding'), {:controller => 'show', :action => 'designs'}%></next>
+		</p>
+	</div>
+
+<% end %> <!-- if-else enfd-->
+
+
+
+
+
+
+
+
+

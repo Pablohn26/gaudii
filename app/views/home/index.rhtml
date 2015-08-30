@@ -1,0 +1,43 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<div class="graybox">
+	<p align="center">
+	<%= image_tag(I18n.t('home.title')) %>
+	</p>
+	<div class="index_button">
+		<p align="right"><next><%= link_to I18n.t('home.start'), {:controller => 'collect', :action => 'preferences'}%></next></p>
+	</div>
+</div>
+
+<div class="infobox">
+	<h1><%= I18n.t('home.latest') %></h1>
+	<p><%= I18n.t('home.latest_text') %></p>
+	<!-- Start of Flickr Badge -->
+	<style type="text/css">
+	#flickr_badge_source_txt {padding:0; font: 11px Arial, Helvetica, Sans serif; color:#000;}
+	#flickr_badge_icon {display:block !important; margin:0 !important; border: 1px solid rgb(0, 0, 0) !important;}
+	#flickr_icon_td {padding:0 5px 0 0 !important;}
+	.flickr_badge_image {text-align:center !important;}
+	.flickr_badge_image img {border: 1px solid black !important;}
+	#flickr_www {display:block; padding:0 10px 0 10px !important; font: 11px Arial, Helvetica, Sans serif !important; color:#3993ff !important;}
+	#flickr_badge_uber_wrapper a:hover,
+	#flickr_badge_uber_wrapper a:link,
+	#flickr_badge_uber_wrapper a:active,
+	#flickr_badge_uber_wrapper a:visited {text-decoration:none !important; background:inherit !important;color:#3993ff;}
+	#flickr_badge_wrapper {background-color:#f68e48;border: solid 1px #f68e48}
+	#flickr_badge_source {padding:0 !important; font: 11px Arial, Helvetica, Sans serif !important; color:#000 !important;}
+	</style>
+	<table align="center" id="flickr_badge_uber_wrapper" cellpadding="0" cellspacing="10" border="0"><tr><td><table cellpadding="0" cellspacing="10" border="0" id="flickr_badge_wrapper">
+	<tr>
+	<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&display=latest&size=t&layout=h&context=in%2Fpool-gaudii%2F&source=group&group=1301964@N24"></script>
+	</tr>
+	</table>
+	</td></tr></table>
+	<!-- End of Flickr Badge -->
+	
+</div>

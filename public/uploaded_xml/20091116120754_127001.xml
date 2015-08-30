@@ -1,0 +1,6 @@
+<DESIGN>
+	<genes string='1879485821127022758385641543744'/>
+	<foreground>
+		<fg_color n='0' blue='255' green='255' red='255'/>
+		<fg_color n='1' blue='224' green='233' red='255'/>
+		<fg_color n='2' blue='0' green='1' red='5'/><fg_color n='3' blue='128' green='165' red='255'/><fg_color n='4' blue='243' green='174' red='87'/><fg_color n='5' blue='146' green='255' red='171'/><fg_color n='6' blue='199' green='255' red='243'/><fg_color n='7' blue='0' green='0' red='0'/></foreground><background/></DESIGN>

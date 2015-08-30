@@ -1,0 +1,17 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<% options = {I18n.t('texts.t_h2') => '2', I18n.t('texts.t_h3') => '3', I18n.t('texts.t_h4') => '4'} %>
+
+<% @group.items.length.times do |item_number| %>
+	<div class='text'>
+		<p>
+			<%= I18n.t('texts.text') %>: <%= text_field_tag 'c'+item_number.to_s, nil, :size => '60', :maxlength => '45' %> 
+			<%= I18n.t('texts.type') %>: <%= select_tag 't'+item_number.to_s.to_s, options_for_select(options.sort, '2')%>
+		</p>
+	</div>
+<% end %>

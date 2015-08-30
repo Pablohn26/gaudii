@@ -1,0 +1,32 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<ul>
+	<p align="center"><bignumber><%= @genes.length %></bignumber><br>
+	<% if @genes.length != 1 %>
+		<%= I18n.t('show.elements') %></p>
+	<% else %>
+		<%= I18n.t('show.element') %></p>
+	<% end %>
+	<% if @genes.length >=2 %>
+		<table style="nob">
+			<td valign="bottom">
+				<div class="button_nf">
+					<next><%= link_to_remote I18n.t('button.mix'),
+					:url => { :action => "get_similar_designs"},
+					:before => %(Element.show('spinner2')),
+				 	:success => %(Element.hide('spinner2'))
+				 %></next>
+				</div>
+			</td>
+			<td valign="bottom">
+				<%= image_tag 'dna_spinner.gif', :id => 'spinner2', :style => 'display: none'  %>
+			</td>
+			
+		</table>
+	<% end %>
+</ul>

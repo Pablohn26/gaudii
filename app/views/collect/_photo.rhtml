@@ -1,0 +1,14 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<% len = photo.sizes.length  %>
+
+<%= link_to_remote_redbox image_tag(image_path(photo.sizes[0]['source']), :class=>"photo"),
+:url => {:controller=>'collect', 
+:action=>'show_big_photo',
+:path => photo.sizes[len-1]['source'],
+:width=> photo.sizes[len-1]['width'].to_s} %>

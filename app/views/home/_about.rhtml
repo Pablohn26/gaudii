@@ -1,0 +1,23 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<%= stylesheet_link_tag 'redbox' %>
+
+<div class="info_box">
+	<p><h1>About</h1></p>
+	<p>&nbsp;</p> 
+	<p><%= I18n.t('about.text') %></p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p align="center">
+		<a href="http://oreto.inf-cr.uclm.es/"><%= image_tag("logo_oreto.png") %></a>
+		<a href="http://www.esi.uclm.es"><%= image_tag("logo_esi.png") %></a>
+		<a href="http://www.uclm.es"><%= image_tag("logo_uclm.jpg") %></a>
+	</p>
+	<p align='right'><exit><%= link_to_close_redbox "Close" %></exit></p>
+		
+</div>

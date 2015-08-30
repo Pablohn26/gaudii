@@ -1,0 +1,33 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<%= stylesheet_link_tag 'redbox' %>
+<% options = {I18n.t('texts.t_h2') => '2', I18n.t('texts.t_h3') => '3', I18n.t('texts.t_h4') => '4'} %>
+
+<div class='edit_box'>
+	<p align='left'><h1><%= I18n.t('edit.edit_group') %> <%= @group_number.to_s %></h1></p>
+	<p>&nbsp;</p>
+	<p>
+		<% form_tag :action => 'alter_group', :group_number => @group_number.to_s do%>
+			<% @group.items.length.times do |item_number| %>
+				<div class='text'>
+					<% @item = @group.items[item_number] %>
+					<p>
+						<%= I18n.t('texts.text') %>: <%= text_field_tag 'c'+item_number.to_s, nil, :size => '50', :value => @item.content.to_s %> 
+						<%= I18n.t('texts.type') %>: <%= select_tag 't'+item_number.to_s.to_s, options_for_select((options), @item.type.to_s)%>
+					</p>
+				</div>
+			<% end %>
+			<p>&nbsp;</p>
+			<p align='right'>
+				<exit><%= link_to_close_redbox I18n.t('button.close_ws') %></exit> 
+				<save><%= link_to_function I18n.t('button.close_saving'), "$(this).up('form').submit()" %></save>
+			</p>
+		<% end %>
+	</p>
+	
+</div>

@@ -1,0 +1,26 @@
+<DESIGN>
+	<genes string='18224321814478577674516585883870'/>
+	<foreground>
+		<fg_color n='0' blue='0' green='0' red='0'/><fg_color n='1' blue='255' green='255' red='255'/>
+		<fg_color n='2' blue='255' green='255' red='255'/>
+		<fg_color n='3' blue='255' green='255' red='255'/>
+		<fg_color n='4' blue='230' green='230' red='230'/>
+		<fg_color n='5' blue='220' green='220' red='220'/>
+		<fg_color n='6' blue='210' green='210' red='210'/>
+		<fg_color n='7' blue='255' green='255' red='255'/>
+	</foreground>
+	<background>
+		<bg_color n='0' blue='255' green='255' red='255'/>
+		<bg_color n='1' blue='0' green='0' red='0'/>
+		<bg_color n='2' blue='0' green='0' red='0'/>
+		<bg_color n='3' blue='0' green='0' red='0'/>
+		<bg_color n='4' blue='0' green='0' red='0'/>
+		<bg_color n='5' blue='0' green='0' red='0'/>
+		<bg_color n='6' blue='0' green='0' red='0'/>
+		<bg_color n='7' blue='0' green='0' red='0'/>
+	</background>
+	<fonts>
+		<font font='Garamond' type='primary'/>
+		<font font='CenturySchoolbook' type='secondary'/>
+	</fonts>
+</DESIGN>

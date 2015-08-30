@@ -1,0 +1,70 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<script type="text/javascript" language="javascript">
+    function onEndCrop( coords, dimensions ) {
+	    $( 'x1' ).value = coords.x1;
+	    $( 'y1' ).value = coords.y1;
+	    $( 'x2' ).value = coords.x2;
+	    $( 'y2' ).value = coords.y2;
+	    $( 'width' ).value = dimensions.width;
+	    $( 'height' ).value = dimensions.height;
+	}
+
+
+	Event.observe( window, 'load', function() {
+        new Cropper.Img(
+            'original_image',
+            { onEndCrop: onEndCrop }
+        );
+    } );
+</script>
+
+<h2><%= I18n.t('step.three') %></h2>
+
+<p><%= I18n.t('step.three_text_no_cv') %></p>
+
+<p><%= I18n.t('step.three_text') %></p>
+
+
+<table style='nob' align="center">
+<tr>
+<td>
+	<div id="image">
+		<p align="center">
+			<%= image_tag('uploaded_pictures/'+@path, :width=>'600', :id => 'original_image')  %>
+		</p>	
+	</div>
+</td>
+<td style="vertical-align:top; padding-left:15px">
+
+</td>
+</tr>
+</table>
+
+<% form_tag :action => 'add_spot', :cv=>'false' do%>	
+	<div style='display:none;'>
+		<p>x1: <%= text_field_tag 'x1', nil, :name => 'x1', :size => '35' %> </p>
+		<p>y1: <%= text_field_tag 'y1', nil, :name => 'y1', :size => '35' %></p>
+		<p>x2: <%= text_field_tag 'x2', nil, :name => 'x2', :size => '35' %></p>
+		<p>y2: <%= text_field_tag 'y2', nil, :name => 'y2', :size => '35' %></p>
+	</div>
+	
+	<% options = {I18n.t('shape.cc') => '0', I18n.t('shape.sc') => '1', I18n.t('shape.ss') => '2', I18n.t('shape.cs') => '3'} %>
+	<p align="center"><%= I18n.t('shape.text') %>
+	<%= select_tag 'image_shape', options_for_select((options))%></p>
+
+	<div class="button">
+		<p><next><%= link_to_function I18n.t('button.next'), "$(this).up('form').submit()" %></next></p>
+	</div>
+<%end%>
+
+
+
+
+
+

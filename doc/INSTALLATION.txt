@@ -1,0 +1,36 @@
+Follow these instructions to install Gaudii locally.
+
+The libraries needed tu run Gaudii are:
+
+- Ruby - http://www.ruby-lang.org/es/downloads/
+- Ruby On Rails - http://www.rubyonrails.org.es/descargas.html (this includes Mongrel server)
+- ImageMagick - http://www.imagemagick.org/script/index.php
+- RMagick - http://rubyforge.org/projects/rmagick/
+- OpenCV - http://sourceforge.net/projects/opencvlibrary/
+
+After that, you need to compile the C and C++ files. 
+
+C file (.c) is in:
+
+/app/models/C/
+
+C++ files (.cpp) are in: 
+
+/app/models/openCV/
+
+main.cpp file inside "face" folder must be compiled with the name "face" inside the same folder. 
+
+main.cpp file inside "blob" folder must be compiled with the name "blob" inside the same folder.
+
+Once compiled, you can run Gaudii by going to the root folder of the project and writing this in your Terminal:
+
+gaudii$ script/server
+
+This will launch the server. It will also show the address for accesing Gaudii:
+
+=>Booting Mongrel
+=>Rails 2.3.2 application starting on http://0.0.0.0:3000
+=>Call with -d to detach 
+=>Ctrl-C to shutdown server
+
+Just put that address in your browser and you're done :)

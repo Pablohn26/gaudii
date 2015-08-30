@@ -1,0 +1,23 @@
+<DESIGN>
+	<genes string='4819663482421366875645211848026'/>
+	<foreground>
+		<color n='0' blue='0' green='0' red='0'/>
+		<color n='1' blue='0' green='102' red='100'/>
+		<color n='2' blue='0' green='5' red='5'/>
+		<color n='3' blue='0' green='82' red='80'/>
+		<color n='4' blue='46' green='0' red='85'/>
+		<color n='5' blue='72' green='8' red='25'/>
+		<color n='6' blue='71' green='26' red='8'/>
+		<color n='7' blue='0' green='0' red='0'/>
+	</foreground>
+	<background>
+		<color n='0' blue='255' green='255' red='255'/>
+		<color n='1' blue='255' green='255' red='255'/>
+		<color n='2' blue='255' green='255' red='255'/>
+		<color n='3' blue='255' green='255' red='255'/>
+		<color n='4' blue='255' green='255' red='255'/>
+		<color n='5' blue='255' green='255' red='255'/>
+		<color n='6' blue='255' green='255' red='255'/>
+		<color n='7' blue='255' green='255' red='255'/>
+	</background>
+</DESIGN>

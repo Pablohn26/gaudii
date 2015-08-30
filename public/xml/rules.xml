@@ -1,0 +1,995 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<?xml version="1.0"?>
+<FIE>
+	<system name="doc_shape">
+		<linguisticvariable name="shape_bit" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_shape" type="output"> 
+			<fuzzyset tag="squared" a="0" b="0" c="2" d="4" />
+			<fuzzyset tag="standard" a="1" b="3" c="6" d="8" />
+			<fuzzyset tag="wide" a="4" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R1">
+       		<antecedent varname="shape_bit" bit_position="0" tag="low" />
+       		<consequent varname="design_shape" bit_position="0" tag="squared" />
+    	</rule>
+		<rule name="R2">
+       		<antecedent varname="shape_bit" bit_position="0" tag="medium" />
+       		<consequent varname="design_shape" bit_position="0" tag="standard" />
+    	</rule>
+		<rule name="R3">
+       		<antecedent varname="shape_bit" bit_position="0" tag="high" />
+       		<consequent varname="design_shape" bit_position="0" tag="wide" />
+    	</rule>
+	</system>
+	<system name="doc_orientation">
+		<linguisticvariable name="orientation_bit" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_orientation" type="output"> 
+			<fuzzyset tag="horizontal" a="0" b="0" c="4" d="5" />
+			<fuzzyset tag="vertical" a="5" b="6" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R4">
+       		<antecedent varname="orientation_bit" bit_position="1" tag="low" />
+			<consequent varname="design_orientation" bit_position="1" tag="horizontal" />
+    	</rule>
+		<rule name="R5">
+       		<antecedent varname="orientation_bit" bit_position="1" tag="high" />
+       		<consequent varname="design_orientation" bit_position="1" tag="vertical" />
+    	</rule>
+	</system>
+	<system name="doc_font_face_type">
+		<linguisticvariable name="font_face_type_bit" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="3" d="5" />
+       		<fuzzyset tag="medium" a="2" b="4" c="5" d="7" />
+       		<fuzzyset tag="high" a="4" b="6" c="7" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="design_font_face_type" type="output"> 
+			<fuzzyset tag="graphic" a="0" b="0" c="2" d="4" />
+			<fuzzyset tag="script" a="1" b="3" c="6" d="8" />
+			<fuzzyset tag="others" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R11">
+       		<antecedent varname="font_face_type_bit" bit_position="3" tag="low" />
+       		<consequent varname="design_font_face_type" bit_position="3" tag="graphic" />
+    	</rule>
+		<rule name="R12">
+       		<antecedent varname="font_face_type_bit" bit_position="3" tag="medium" />
+       		<consequent varname="design_font_face_type" bit_position="3" tag="script" />
+    	</rule>
+		<rule name="R13">
+       		<antecedent varname="font_face_type_bit" bit_position="3" tag="high" />
+       		<consequent varname="design_font_face_type" bit_position="3" tag="others" />
+    	</rule>
+	</system>
+	<system name="doc_use_of_colors">
+		<linguisticvariable name="use_of_colors_bit" type="input">
+			<fuzzyset tag="low" a="0" b="0" c="1" d="3" />
+       		<fuzzyset tag="medium" a="1" b="2" c="7" d="8" />
+       		<fuzzyset tag="high" a="7" b="8" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="design_design_use_of_colors" type="output"> 
+			<fuzzyset tag="no_colors" a="0" b="0" c="1" d="2" />
+			<fuzzyset tag="normal_use" a="2" b="3" c="7" d="8" />
+			<fuzzyset tag="high_use" a="7" b="8" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R14">
+       		<antecedent varname="use_of_colors_bit" bit_position="21" tag="low" />
+       		<consequent varname="design_design_use_of_colors" bit_position="21" tag="no_colors" />
+    	</rule>
+		<rule name="R15">
+       		<antecedent varname="use_of_colors_bit" bit_position="21" tag="medium" />
+       		<consequent varname="design_design_use_of_colors" bit_position="21" tag="normal_use" />
+    	</rule>
+		<rule name="R16">
+       		<antecedent varname="use_of_colors_bit" bit_position="21" tag="high" />
+       		<consequent varname="design_design_use_of_colors" bit_position="21" tag="high_use" />
+    	</rule>
+	</system>
+	<system name="doc_darkness">
+		<linguisticvariable name="darkness_bit" type="input">
+			<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="design_darkness" type="output"> 
+			<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R17">
+       		<antecedent varname="darkness_bit" bit_position="24" tag="low" />
+       		<consequent varname="design_darkness" bit_position="25" tag="low" />
+    	</rule>
+		<rule name="R18">
+       		<antecedent varname="darkness_bit" bit_position="24" tag="high" />
+       		<consequent varname="design_darkness" bit_position="25" tag="high" />
+    	</rule>
+	</system>
+	<system name="doc_bg">
+		<linguisticvariable name="picture_as_background" type="input">
+       		<fuzzyset tag="yes" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="no" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="design_bg" type="output"> 
+			<fuzzyset tag="picture" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="plain" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R19">
+       		<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="design_bg" bit_position="22" tag="picture" />
+    	</rule>
+		<rule name="R20">
+       		<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="design_bg" bit_position="22" tag="plain" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_height0">
+		<linguisticvariable name="contrast_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_font_height0" type="output"> 
+			<fuzzyset tag="very_big" 	a="64" b="72" c="80" d="82" />
+			<fuzzyset tag="huge" 		a="90" b="102" c="108" d="120" />
+    	</linguisticvariable>
+		<rule name="R21">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height0" bit_position="4" tag="very_big" />
+    	</rule>
+		<rule name="R22">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height0" bit_position="4" tag="very_big" />
+    	</rule>
+		<rule name="R23">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height0" bit_position="4" tag="very_big" />
+    	</rule>
+		<rule name="R24">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height0" bit_position="4" tag="very_big" />
+    	</rule>
+		<rule name="R25">
+       		<antecedent varname="contrast_size" bit_position="4" tag="high" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height0" bit_position="4" tag="huge" />
+    	</rule>		
+	</system>
+	<system name="contrast_repetition_height1">
+		<linguisticvariable name="contrast_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_font_height1" type="output"> 
+			<fuzzyset tag="normal" 		a="26" 	b="32" 	c="36" 	d="42" />
+			<fuzzyset tag="big" 		a="40" b="46" c="56" d="68" />
+			<fuzzyset tag="very_big" 	a="64" b="72" c="80" d="82" />
+    	</linguisticvariable>
+		<rule name="R26">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height1" bit_position="5" tag="big" />
+    	</rule>
+		<rule name="R27">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height1" bit_position="5" tag="very_big" />
+    	</rule>
+		<rule name="R28">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height1" bit_position="5" tag="normal" />
+    	</rule>
+		<rule name="R29">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height1" bit_position="5" tag="big" />
+    	</rule>
+		<rule name="R30">
+       		<antecedent varname="contrast_size" bit_position="4" tag="high" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height1" bit_position="5" tag="normal" />
+    	</rule>		
+	</system>
+	<system name="contrast_repetition_height2">
+		<linguisticvariable name="contrast_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_font_height2" type="output"> 
+			<fuzzyset tag="very_little" a="12" 	b="12" 	c="16" 	d="20" />
+			<fuzzyset tag="little" 		a="14" 	b="18" 	c="24" 	d="28" />
+			<fuzzyset tag="normal" 		a="26" 	b="32" 	c="36" 	d="42" />
+    	</linguisticvariable>
+		<rule name="R31">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height2" bit_position="6" tag="normal" />
+    	</rule>
+		<rule name="R32">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height2" bit_position="6" tag="normal" />
+    	</rule>
+		<rule name="R33">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height2" bit_position="6" tag="normal" />
+    	</rule>
+		<rule name="R34">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height2" bit_position="6" tag="normal" />
+    	</rule>
+		<rule name="R35">
+       		<antecedent varname="contrast_size" bit_position="4" tag="high" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height2" bit_position="6" tag="little" />
+    	</rule>		
+	</system>
+	<system name="contrast_repetition_height3">
+		<linguisticvariable name="contrast_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_font_height3" type="output"> 
+			<fuzzyset tag="very_little" a="12" 	b="12" 	c="16" 	d="20" />
+			<fuzzyset tag="little" 		a="14" 	b="18" 	c="24" 	d="28" />
+			<fuzzyset tag="normal" 		a="26" 	b="32" 	c="36" 	d="42" />
+    	</linguisticvariable>
+		<rule name="R36">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height3" bit_position="7" tag="little" />
+    	</rule>
+		<rule name="R37">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height3" bit_position="7" tag="normal" />
+    	</rule>
+		<rule name="R38">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height3" bit_position="7" tag="little" />
+    	</rule>
+		<rule name="R39">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height3" bit_position="7" tag="normal" />
+    	</rule>
+		<rule name="R40">
+       		<antecedent varname="contrast_size" bit_position="4" tag="high" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height3" bit_position="7" tag="little" />
+    	</rule>		
+	</system>
+	<system name="contrast_repetition_height4">
+		<linguisticvariable name="contrast_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_size" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_font_height4" type="output"> 
+			<fuzzyset tag="very_little" a="12" 	b="12" 	c="16" 	d="20" />
+			<fuzzyset tag="little" 		a="14" 	b="18" 	c="24" 	d="28" />
+			<fuzzyset tag="normal" 		a="26" 	b="32" 	c="36" 	d="42" />
+    	</linguisticvariable>
+		<rule name="R41">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height4" bit_position="8" tag="very_little" />
+    	</rule>
+		<rule name="R42">
+       		<antecedent varname="contrast_size" bit_position="4" tag="low" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height4" bit_position="8" tag="normal" />
+    	</rule>
+		<rule name="R43">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height4" bit_position="8" tag="very_little" />
+    	</rule>
+		<rule name="R44">
+       		<antecedent varname="contrast_size" bit_position="4" tag="medium" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="high" />
+       		<consequent varname="design_font_height4" bit_position="8" tag="little" />
+    	</rule>
+		<rule name="R45">
+       		<antecedent varname="contrast_size" bit_position="4" tag="high" />   
+			<antecedent varname="repetition_size" bit_position="12" tag="low" />
+       		<consequent varname="design_font_height4" bit_position="8" tag="very_little" />
+    	</rule>		
+	</system>
+	<system name="contrast_repetition_color_main">
+		<linguisticvariable name="contrast_colors" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_colors" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="source_of_color" type="input">
+       		<fuzzyset tag="picture" a="0" b="0" c="2" d="4" />
+			<fuzzyset tag="some_of_the_picture" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="random" 	a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="picture_as_background" type="input">
+       		<fuzzyset tag="yes" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="no" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="main_color" type="output"> 
+			<fuzzyset tag="comp_main_pic" 		a="0" 	b="0" 	c="1" 	d="3" />
+       		<fuzzyset tag="contrast_main_pic" 	a="1" 	b="2" 	c="4" 	d="5" />
+			<fuzzyset tag="main_pic" 			a="4" 	b="5" 	c="7" 	d="8" />
+       		<fuzzyset tag="random"				a="6" 	b="8" 	c="9" 	d="9" />
+    	</linguisticvariable>
+		<rule name="R46">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="main_color" bit_position="9" tag="comp_main_pic" />
+    	</rule>
+		<rule name="R47">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="main_color" bit_position="9" tag="main_pic" />
+    	</rule>
+		<rule name="R48">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="main_color" bit_position="9" tag="contrast_main_pic" />
+    	</rule>
+		<rule name="R49">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="main_color" bit_position="9" tag="main_pic" />
+    	</rule>
+		<rule name="R50">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />	
+			<antecedent varname="source_of_color" bit_position="22" tag="random" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="main_color" bit_position="9" tag="random" />
+    	</rule>	
+		<rule name="R51">
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="random" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="main_color" bit_position="9" tag="random" />
+    	</rule>
+		<rule name="R52">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="main_color" bit_position="9" tag="main_pic" />
+    	</rule>
+		<rule name="R53">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="main_color" bit_position="9" tag="main_pic" />
+    	</rule>
+		<rule name="R54">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="main_color" bit_position="9" tag="contrast_main_pic" />
+    	</rule>
+		<rule name="R55">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="main_color" bit_position="9" tag="main_pic" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_color_accents">
+		<linguisticvariable name="contrast_colors" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_colors" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="source_of_color" type="input">
+       		<fuzzyset tag="picture" a="0" b="0" c="2" d="4" />
+			<fuzzyset tag="some_of_the_picture" a="1" b="3" c="6" d="7" />
+       		<fuzzyset tag="random" 	a="6" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="picture_as_background" type="input">
+       		<fuzzyset tag="yes" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="no" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="accent_colors" type="output"> 
+			<fuzzyset tag="secondary_pic" 		a="0" 	b="0" 	c="1" 	d="3" />
+       		<fuzzyset tag="triadic" 			a="1" 	b="2" 	c="4" 	d="5" />
+			<fuzzyset tag="analogous" 			a="4" 	b="5" 	c="7" 	d="8" />
+       		<fuzzyset tag="complementary"		a="6" 	b="8" 	c="9" 	d="9" />
+    	</linguisticvariable>
+		<rule name="R56">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="accent_colors" bit_position="23" tag="triadic" />
+    	</rule>
+		<rule name="R57">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="accent_colors" bit_position="23" tag="secondary_pic" />
+    	</rule>
+		<rule name="R58">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="accent_colors" bit_position="23" tag="triadic" />
+    	</rule>
+		<rule name="R59">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="accent_colors" bit_position="23" tag="analogous" />
+    	</rule>
+		<rule name="R60">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />	
+			<antecedent varname="source_of_color" bit_position="22" tag="random" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="accent_colors" bit_position="23" tag="complementary" />
+    	</rule>	
+		<rule name="R61">
+			<antecedent varname="contrast_colors" bit_position="5" tag="low" />
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="random" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="accent_colors" bit_position="23" tag="analogous" />
+    	</rule>
+		<rule name="R62">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="accent_colors" bit_position="23" tag="triadic" />
+    	</rule>
+		<rule name="R63">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="accent_colors" bit_position="23" tag="analogous" />
+    	</rule>
+		<rule name="R64">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="accent_colors" bit_position="23" tag="triadic" />
+    	</rule>
+		<rule name="R65">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="source_of_color" bit_position="22" tag="some_of_the_picture" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="accent_colors" bit_position="23" tag="analogous" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_color_bg">
+		<linguisticvariable name="contrast_colors" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_colors" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="picture_as_background" type="input">
+       		<fuzzyset tag="yes" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="no" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="background_color" type="output"> 
+			<fuzzyset tag="bw" 			a="0" 	b="0" 	c="3" 	d="4" />
+       		<fuzzyset tag="pale"		a="2" 	b="3" 	c="6" 	d="8" />
+			<fuzzyset tag="nevermind"	a="5" 	b="7" 	c="9" 	d="9" />
+    	</linguisticvariable>
+		<rule name="R66">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="high" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="low" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="background_color" bit_position="24" tag="bw" />
+    	</rule>
+		<rule name="R67">
+       		<antecedent varname="contrast_colors" bit_position="5" tag="low" />   
+			<antecedent varname="repetition_colors" bit_position="13" tag="high" />
+			<antecedent varname="picture_as_background" bit_position="23" tag="no" />
+       		<consequent varname="background_color" bit_position="24" tag="pale" />
+    	</rule>
+		<rule name="R68">
+			<antecedent varname="picture_as_background" bit_position="23" tag="yes" />
+       		<consequent varname="background_color" bit_position="24" tag="nevermind" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_shape">
+		<linguisticvariable name="contrast_shape" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_shape" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="input_shape" type="input">
+			<fuzzyset tag="curved" 				a="0" b="0" c="2" d="3" />
+       		<fuzzyset tag="slightly_curved" 	a="2" b="3" c="4" d="5" />
+       		<fuzzyset tag="slightly_straight" 	a="4" b="5" c="6" d="7" />
+			<fuzzyset tag="straight" 			a="6" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_elements_shape" type="output"> 
+			<fuzzyset tag="curved" 				a="0" b="0" c="2" d="3" />
+       		<fuzzyset tag="slightly_curved" 	a="2" b="3" c="4" d="5" />
+       		<fuzzyset tag="slightly_straight" 	a="4" b="5" c="6" d="7" />
+			<fuzzyset tag="straight" 			a="6" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R69">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="low" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="high" />
+			<antecedent varname="input_shape" bit_position="20" tag="slightly_curved" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="slightly_curved" />
+    	</rule>
+		<rule name="R70">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="high" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="low" />
+			<antecedent varname="input_shape" bit_position="20" tag="slightly_curved" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="straight" />
+    	</rule>
+		<rule name="R71">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="low" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="high" />
+			<antecedent varname="input_shape" bit_position="20" tag="curved" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="curved" />
+    	</rule>
+		<rule name="R72">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="high" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="low" />
+			<antecedent varname="input_shape" bit_position="20" tag="curved" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="straight" />
+    	</rule>
+		<rule name="R73">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="low" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="high" />
+			<antecedent varname="input_shape" bit_position="20" tag="slightly_straight" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="slightly_straight" />
+    	</rule>
+		<rule name="R74">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="high" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="low" />
+			<antecedent varname="input_shape" bit_position="20" tag="slightly_straight" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="curved" />
+    	</rule>
+		<rule name="R55">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="low" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="high" />
+			<antecedent varname="input_shape" bit_position="20" tag="straight" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="straight" />
+    	</rule>
+		<rule name="R76">
+       		<antecedent varname="contrast_shape" bit_position="6" tag="high" />   
+			<antecedent varname="repetition_shape" bit_position="14" tag="low" />
+			<antecedent varname="input_shape" bit_position="20" tag="straight" />
+       		<consequent varname="design_elements_shape" bit_position="10" tag="curved" />
+    	</rule>
+	</system>
+	<system name="contrast_background">
+		<linguisticvariable name="contrast_background" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="2" d="3" />
+			<fuzzyset tag="medium" 	a="2" b="3" c="6" d="7" />
+       		<fuzzyset tag="high" 	a="6" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="text_background" type="output"> 
+			<fuzzyset tag="no_use"		a="0" 	b="0" 	c="2" 	d="3" />
+       		<fuzzyset tag="medium_use" 	a="2" 	b="3" 	c="6" 	d="7" />
+			<fuzzyset tag="high_use" 	a="6" 	b="7" 	c="9" 	d="9" />
+    	</linguisticvariable>
+		<rule name="R79">
+       		<antecedent varname="contrast_background" bit_position="8" tag="low" />   
+       		<consequent varname="text_background" bit_position="12" tag="no_use" />
+    	</rule>
+		<rule name="R80">
+       		<antecedent varname="contrast_background" bit_position="8" tag="medium" />   
+       		<consequent varname="text_background" bit_position="12" tag="medium_use" />
+    	</rule>
+		<rule name="R121">
+       		<antecedent varname="contrast_background" bit_position="8" tag="high" />   
+       		<consequent varname="text_background" bit_position="12" tag="high_use" />
+    	</rule>
+	</system>
+	<system name="contrast_background_decoration">
+		<linguisticvariable name="decoration_bit" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="decoration" type="output"> 
+			<fuzzyset tag="undercolor" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="border" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R127">
+       		<antecedent varname="decoration_bit" bit_position="31" tag="low" />
+       		<consequent varname="decoration" bit_position="30" tag="undercolor" />
+    	</rule>
+		<rule name="R128">
+       		<antecedent varname="decoration_bit" bit_position="31" tag="high" />
+       		<consequent varname="decoration" bit_position="30" tag="border" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_weight_h0">
+		<linguisticvariable name="contrast_weight" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_weight" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="font_weight_h0" type="output">
+			<fuzzyset tag="semibold" a="3" b="4" c="5" d="6" />
+			<fuzzyset tag="bold" a="5" b="6" c="7" d="8" />
+			<fuzzyset tag="black" a="7" b="8" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R84">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h0" bit_position="14" tag="semibold" />
+    	</rule>
+		<rule name="R85">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h0" bit_position="14" tag="semibold" />
+    	</rule>
+		<rule name="R86">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h0" bit_position="14" tag="bold" />
+    	</rule>
+		<rule name="R87">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h0" bit_position="14" tag="bold" />
+    	</rule>
+		<rule name="R88">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="high" />  
+       		<consequent varname="font_weight_h0" bit_position="14" tag="bold" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_weight_h1">
+		<linguisticvariable name="contrast_weight" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_weight" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="font_weight_h1" type="output">
+			<fuzzyset tag="semibold" a="3" b="4" c="5" d="6" />
+			<fuzzyset tag="light" a="0" b="0" c="1" d="2" />
+			<fuzzyset tag="normal" a="1" b="2" c="3" d="4" />
+    	</linguisticvariable>
+		<rule name="R89">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h1" bit_position="15" tag="normal" />
+    	</rule>
+		<rule name="R90">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h1" bit_position="15" tag="semibold" />
+    	</rule>
+		<rule name="R91">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h1" bit_position="15" tag="light" />
+    	</rule>
+		<rule name="R92">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h1" bit_position="15" tag="light" />
+    	</rule>
+		<rule name="R93">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="high" />  
+       		<consequent varname="font_weight_h1" bit_position="15" tag="light" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_weight_h2">
+		<linguisticvariable name="contrast_weight" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_weight" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="font_weight_h2" type="output">
+			<fuzzyset tag="semibold" a="3" b="4" c="5" d="6" />
+			<fuzzyset tag="bold" a="5" b="6" c="7" d="8" />
+			<fuzzyset tag="black" a="7" b="8" c="9" d="9" />
+			<fuzzyset tag="normal" a="1" b="2" c="3" d="4" />
+    	</linguisticvariable>
+		<rule name="R94">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h2" bit_position="16" tag="semibold" />
+    	</rule>
+		<rule name="R95">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h2" bit_position="16" tag="normal" />
+    	</rule>
+		<rule name="R96">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h2" bit_position="16" tag="bold" />
+    	</rule>
+		<rule name="R97">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h2" bit_position="16" tag="normal" />
+    	</rule>
+		<rule name="R98">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="high" />  
+       		<consequent varname="font_weight_h2" bit_position="16" tag="black" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_weight_h3">
+		<linguisticvariable name="contrast_weight" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_weight" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="font_weight_h3" type="output">
+			<fuzzyset tag="light" a="0" b="0" c="1" d="2" />
+			<fuzzyset tag="normal" a="1" b="2" c="3" d="4" />
+    	</linguisticvariable>
+		<rule name="R99">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h3" bit_position="17" tag="normal" />
+    	</rule>
+		<rule name="R100">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h3" bit_position="17" tag="normal" />
+    	</rule>
+		<rule name="R101">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h3" bit_position="17" tag="normal" />
+    	</rule>
+		<rule name="R102">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h3" bit_position="17" tag="normal" />
+    	</rule>
+		<rule name="R103">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="high" />  
+       		<consequent varname="font_weight_h3" bit_position="17" tag="light" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_weight_h4">
+		<linguisticvariable name="contrast_weight" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="2" d="4" />
+       		<fuzzyset tag="medium" a="1" b="3" c="6" d="8" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="repetition_weight" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" 	a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="font_weight_h4" type="output">
+			<fuzzyset tag="light" a="0" b="0" c="1" d="2" />
+			<fuzzyset tag="normal" a="1" b="2" c="3" d="4" />
+    	</linguisticvariable>
+		<rule name="R104">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h4" bit_position="18" tag="normal" />
+    	</rule>
+		<rule name="R105">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="low" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h4" bit_position="18" tag="normal" />
+    	</rule>
+		<rule name="R106">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="low" />
+       		<consequent varname="font_weight_h4" bit_position="18" tag="normal" />
+    	</rule>
+		<rule name="R107">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="medium" />   
+			<antecedent varname="repetition_weight" bit_position="17" tag="high" />
+       		<consequent varname="font_weight_h4" bit_position="18" tag="normal" />
+    	</rule>
+		<rule name="R108">
+       		<antecedent varname="contrast_weight" bit_position="10" tag="high" />  
+       		<consequent varname="font_weight_h4" bit_position="18" tag="light" />
+    	</rule>
+	</system>
+	<system name="contrast_repetition_font_face">
+		<linguisticvariable name="contrast_font_face" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="5" b="6" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="repetition_font_face" type="input"> 
+			<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+       		<fuzzyset tag="high" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<linguisticvariable name="design_font_face_2" type="output"> 
+			<fuzzyset tag="same" a="0" b="0" c="2" d="4" />
+			<fuzzyset tag="different" a="5" b="7" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R109">
+       		<antecedent varname="contrast_font_face" bit_position="11" tag="low" />
+			<antecedent varname="repetition_font_face" bit_position="18" tag="low" />
+       		<consequent varname="design_font_face_2" bit_position="19" tag="same" />
+    	</rule>
+		<rule name="R110">
+       		<antecedent varname="contrast_font_face" bit_position="11" tag="low" />
+			<antecedent varname="repetition_font_face" bit_position="18" tag="high" />
+       		<consequent varname="design_font_face_2" bit_position="19" tag="same" />
+    	</rule>
+		<rule name="R111">
+       		<antecedent varname="contrast_font_face" bit_position="11" tag="high" />
+			<antecedent varname="repetition_font_face" bit_position="18" tag="low" />
+       		<consequent varname="design_font_face_2" bit_position="19" tag="different" />
+    	</rule>
+	</system>
+	<system name="composition_doc_margins">
+		<linguisticvariable name="doc_margins_bit" type="input">
+       		<fuzzyset tag="no_margin" a="0" b="0" c="1" d="2" />
+			<fuzzyset tag="low" a="1" b="2" c="4" d="5" />
+			<fuzzyset tag="medium" a="4" b="5" c="7" d="8" />
+       		<fuzzyset tag="high" a="7" b="8" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="margin" type="output"> 
+			<fuzzyset tag="no_margin" a="0" b="0" c="1" d="2" />
+			<fuzzyset tag="low" a="1" b="2" c="4" d="5" />
+			<fuzzyset tag="medium" a="4" b="5" c="7" d="8" />
+       		<fuzzyset tag="high" a="7" b="8" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R115">
+       		<antecedent varname="doc_margins_bit" bit_position="28" tag="no_margin" />
+       		<consequent varname="margin" bit_position="26" tag="no_margin" />
+    	</rule>
+		<rule name="R116">
+       		<antecedent varname="doc_margins_bit" bit_position="28" tag="low" />
+       		<consequent varname="margin" bit_position="26" tag="low" />
+    	</rule>
+		<rule name="R117">
+       		<antecedent varname="doc_margins_bit" bit_position="28" tag="medium" />
+       		<consequent varname="margin" bit_position="26" tag="medium" />
+    	</rule>
+		<rule name="R118">
+       		<antecedent varname="doc_margins_bit" bit_position="28" tag="high" />
+       		<consequent varname="margin" bit_position="26" tag="high" />
+    	</rule>
+	</system>
+	<system name="composition_main_image_position">
+		<linguisticvariable name="main_image_position_bit" type="input">
+       		<fuzzyset tag="normal" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="alternative" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="main_image_position" type="output"> 
+			<fuzzyset tag="normal" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="alternative" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R119">
+       		<antecedent varname="main_image_position_bit" bit_position="27" tag="normal" />
+       		<consequent varname="main_image_position" bit_position="27" tag="normal" />
+    	</rule>
+		<rule name="R120">
+       		<antecedent varname="main_image_position_bit" bit_position="27" tag="alternative" />
+       		<consequent varname="main_image_position" bit_position="27" tag="alternative" />
+    	</rule>
+	</system>
+	<system name="contrast_all_caps">
+		<linguisticvariable name="all_caps_bit" type="input">
+       		<fuzzyset tag="low" 	a="0" b="0" c="4" d="5" />
+			<fuzzyset tag="medium" 	a="3" b="5" c="6" d="7" />
+       		<fuzzyset tag="high" 	a="6" b="8" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="all_caps" type="output"> 
+			<fuzzyset tag="none" 			a="0" b="0" c="3" d="5" />
+			<fuzzyset tag="title" 			a="2" b="4" c="5" d="7" />
+			<fuzzyset tag="title_subtitle" 	a="6" b="8" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R122">
+       		<antecedent varname="all_caps_bit" bit_position="29" tag="low" />
+       		<consequent varname="all_caps" bit_position="28" tag="none" />
+    	</rule>
+		<rule name="R123">
+       		<antecedent varname="all_caps_bit" bit_position="29" tag="medium" />
+       		<consequent varname="all_caps" bit_position="28" tag="title" />
+    	</rule>
+		<rule name="R124">
+       		<antecedent varname="all_caps_bit" bit_position="29" tag="high" />
+       		<consequent varname="all_caps" bit_position="28" tag="title_subtitle" />
+    	</rule>
+	</system>
+	<system name="composition_zooming">
+		<linguisticvariable name="zooming_bit" type="input">
+       		<fuzzyset tag="low" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="high" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>	
+		<linguisticvariable name="zooming" type="output"> 
+			<fuzzyset tag="no" a="0" b="0" c="4" d="6" />
+			<fuzzyset tag="yes" a="3" b="5" c="9" d="9" />
+    	</linguisticvariable>
+		<rule name="R125">
+       		<antecedent varname="zooming_bit" bit_position="30" tag="low" />
+       		<consequent varname="zooming" bit_position="29" tag="no" />
+    	</rule>
+		<rule name="R126">
+       		<antecedent varname="zooming_bit" bit_position="30" tag="high" />
+       		<consequent varname="zooming" bit_position="29" tag="yes" />
+    	</rule>
+	</system>
+</FIE>

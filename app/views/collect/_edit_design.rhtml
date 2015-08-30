@@ -1,0 +1,37 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<%= stylesheet_link_tag 'redbox' %>
+
+<div class="edit_box">
+	<p><h1><%= I18n.t('edit.title') %></h1></p>
+	<p>&nbsp;</p> 
+	<p><%= link_to I18n.t('edit.initial'), {:controller=> 'collect' ,
+				:action => 'preferences', 
+				:edit => 'yes'}%>
+	</p>
+	<p>&nbsp;</p>
+	<% if @design.main_image == nil and @design.init_questions['q1']=='3'%>
+		
+		<p><b><%= I18n.t('edit.no_image') %></b></p>
+		<p><ul>
+			<p><li><%= link_to I18n.t('edit.upload_one'), {:action => 'upload_image'}%></li></p>
+			<p><li><%= link_to I18n.t('edit.flickr_one'), {:action => 'flickr_image'}%></li></p>
+		</ul></p>
+	<% elsif @design.main_image != nil%>
+		<p><b><%= I18n.t('edit.image') %></b></p>
+		<p align='center'><%= image_tag('uploaded_pictures/'+@path, :width=>'400')%></p>
+		<p>&nbsp;</p>
+		<p><ul>
+			<p><li><%= link_to I18n.t('edit.upload_another'), {:action => 'upload_image'}%></li></p>
+			<p><li><%= link_to I18n.t('edit.flickr_another'), {:action => 'flickr_image'}%></li></p>
+		</ul></p>
+	<% end %>
+	<p>&nbsp;</p>
+	<p align='right'><exit><%= link_to_close_redbox I18n.t('button.nevermind') %></exit></p>
+	
+</div>

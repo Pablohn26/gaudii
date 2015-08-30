@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Most of the arrangement is like this:
+Curved = Sans Serif
+Straight = Modern
+Slightly Straight = Old Style
+Slightly curved = Slab Serif 
+-->
+<CATALOG>
+	<font name="Badaboom" 			type="graphic" 		shape="slightly_curved" 	filename="public/fonts/Badaboom.ttf" />
+	<font name="Comiquita Sans" 	type="graphic" 		shape="curved" 				filename="public/fonts/ComiquitaSans.ttf" />
+
+	<font name="Flabby" 			type="script" 		shape="curved" 				filename="public/fonts/Flabby.ttf" />
+	<font name="GorriSans" 			type="script" 		shape="curved" 				filename="public/fonts/GorriSans.ttf" />    
+
+	<font name="AlteHaasGrotesk" 	type="others" 		shape="curved" 				filename="public/fonts/AlteHaasGroteskBold.ttf" />
+	<font name="Sansation" 			type="others" 		shape="curved" 				filename="public/fonts/Sansation.ttf" />
+	<font name="TimesSans" 			type="others" 		shape="curved" 				filename="public/fonts/TimesSans.ttf" />	
+	<font name="LiberationSans" 	type="others" 		shape="curved" 				filename="public/fonts/LiberationSans.ttf" />
+	<font name="Florencesans" 		type="others" 		shape="curved" 				filename="public/fonts/Florencesans.ttf" />
+	
+	<font name="Clarendon" 			type="others" 		shape="slightly_curved" 	filename="public/fonts/Clarendon.otf" />
+	<font name="Cooper" 			type="others" 		shape="slightly_curved" 	filename="public/fonts/Cooper" />
+	<font name="Serif" 				type="others" 		shape="slightly_curved" 	filename="public/fonts/Serif.ttf" />
+	
+	<font name="Garamond" 			type="others" 		shape="slightly_straight" 	filename="public/fonts/Garamond.otf" />
+	<font name="CenturySchoolbook" 	type="others" 		shape="slightly_straight" 	filename="public/fonts/CenturySchoolbook" />
+	<font name="Timeless" 			type="others" 		shape="slightly_straight" 	filename="public/fonts/Timeless.ttf" />
+
+	<font name="Dustismo" 			type="others" 		shape="straight"			filename="public/fonts/Dustismo.ttf" />
+	<font name="Tertre" 			type="others" 		shape="straight"			filename="public/fonts/Tertre.otf" />
+</CATALOG>
+
+ 

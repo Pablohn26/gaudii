@@ -1,0 +1,35 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<h2><%= I18n.t('step.two_a') %></h2>
+
+<p><%= I18n.t('step.two_a_text_1') %></p> 
+<p><a href="http://creativecommons.org/licenses/"><%= I18n.t('step.two_a_text_2') %></a></p>
+
+<div class='flickr'>
+<% form_remote_tag :url => {:action => 'search'}, :update => 'photos',
+ 	:complete => visual_effect(:blind_down, 'photos'), 
+   	:before => %(Element.show('spinner')),
+ 	:success => %(Element.hide('spinner')) do %>
+
+<%= image_tag 'spinner.gif', :id => 'spinner', :style => 'display: none'  %>
+
+	<fieldset>
+				<label for="tags">Tags</label>
+				<%= text_field_tag 'tags' %>
+				 <%= I18n.t('step.two_a_text_3') %> <%= radio_button_tag 'commercial_use', '5', true %>
+				 <%= I18n.t('step.two_a_text_4') %> <%= radio_button_tag 'commercial_use', '2', false %>
+				<%= submit_tag I18n.t('button.search') %>
+	</fieldset>
+			
+	<div id="photos" class="flickr_photos" style='display: none'>
+							
+	</div>
+		
+<% end %>
+</div>
+<p></p>

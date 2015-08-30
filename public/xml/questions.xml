@@ -1,0 +1,40 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<?xml version="1.0"?>
+<QUESTIONS>
+	<Q name="question_1" number="1" content="Where do gaudii obtain the main image of your design?">
+		<option value="1" content="I'll upload it"/>
+		<option value="2" content="From flickr website"/>
+	</Q>
+	<Q name="question_2" number="2" content="Where do gaudii obtain the main colors?">
+		<option value="1" content="I don't mind"/>
+		<option value="2" content="From the image"/>
+		<option value="3" content="I like to randomize!"/>
+	</Q>
+	<Q name="question_3" number="3" content="Do you like colors in your design?">
+		<option value="1" content="I don't mind"/>
+		<option value="2" content="Actually, I like stuff being in black and white"/>
+		<option value="3" content="Yeah, why not?"/>
+		<option value="4" content="Sure, I LOVE colors"/>
+	</Q>
+	<Q name="question_4" number="4" content="Do you prefer dark or light designs?">
+		<option value="1" content="I don't mind"/>
+		<option value="2" content="Dark ones, please."/>
+		<option value="3" content="I think I prefer light ones"/>
+	</Q>
+	<Q name="question_5" number="5" content="What kind of fonts would you like to see in your design?">
+		<option value="1" content="I don't mind"/>
+		<option value="2" content="I love funny fonts"/>
+		<option value="3" content="I really prefer a serious design"/>
+	</Q>
+	<Q name="question_6" number="6" content="Do you prefer Horizontal or Vertical oriented designs?">
+		<option value="1" content="I don't mind"/>
+		<option value="2" content="Horizontal"/>
+		<option value="3" content="Vertical"/>
+	</Q>
+</QUESTIONS>

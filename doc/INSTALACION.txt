@@ -1,0 +1,36 @@
+Sigue estas instrucciones para instalar gaudii de forma local.
+
+Las librer’as necesarias para lanzar gaudii son:
+
+- Ruby - http://www.ruby-lang.org/es/downloads/
+- Ruby On Rails - http://www.rubyonrails.org.es/descargas.html (ya se incluye el servidor Mongrel)
+- ImageMagick - http://www.imagemagick.org/script/index.php
+- RMagick - http://rubyforge.org/projects/rmagick/
+- OpenCV - http://sourceforge.net/projects/opencvlibrary/
+
+DespuŽs de instalar esas librer’as necesitas compilar los archivos C y C++:
+
+El archivo C (.c) est‡ en:
+
+/app/models/C/
+
+Los archivos C++ (.cpp) est‡n en: 
+
+/app/models/openCV/
+
+El archivo main.cpp dentro del directorio "face" debe ser compilado con el nombre de salida "face" dentro tambiŽn del mismo directorio.
+
+El archivo main.cpp dentro del directorio "blob" debe ser compilado con el nombre de salida "blob" dentro tambiŽn del mismo directorio.
+
+Una vez compilados, puedes lanzar gaudii desde el directorio ra’z del proyecto (dentro de la carpeta "gaudii"). Desde el Terminal hay que escribir:
+
+gaudii$ script/server
+
+Esto lanzar’a el servidor; tambiŽn informaci—n de la direcci—n que hay que seguir para acceder a gaudii:
+
+=>Booting Mongrel
+=>Rails 2.3.2 application starting on http://0.0.0.0:3000
+=>Call with -d to detach 
+=>Ctrl-C to shutdown server
+
+Tan solo pon la direcci—n en tu navegador y ya est‡ :)

@@ -1,0 +1,32 @@
+<!-- ########################################
+# Víctor José Martín Ramírez                #
+# Carlos González Morcillo                  #
+# Código bajo licencia GPL 3                #
+# => http://www.gnu.org/licenses/gpl.html   #
+##########################################-->
+
+<h2><%= I18n.t('step.two_b') %></h2>
+
+<p><%= I18n.t('step.two_b_text_1') %></p>
+
+<% form_tag({:action => 'upload_image_action'},:multipart => true) do %>
+	<p><%= file_field 'upload', 'datafile' %></p>
+	<%= submit_tag I18n.t('button.upload_image') %>
+<% end %>
+
+<p>
+	&nbsp 
+</p>
+
+<% if @pic_url==nil %>
+	<edit><%= link_to_remote_redbox(I18n.t('button.edit'),
+	:url => {:controller=>'collect', :action=>'edit_design' })%></edit>
+<% end %>
+
+<% if @pic_url!=nil %>
+	<p align='center'><%= image_tag(@pic_url, :height =>  '175')%></p>
+
+	<div class="button">
+		<p><next><%= link_to I18n.t('button.next'), {:action => 'interest_spot'}%></next></p>
+	</div>
+<% end %>
